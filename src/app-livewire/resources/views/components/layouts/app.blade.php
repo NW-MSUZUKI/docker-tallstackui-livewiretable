@@ -19,18 +19,18 @@
           x-data="{ name: @js(auth()->user()->name) }"
           x-on:name-updated.window="name = $event.detail.name"
           x-bind:class="{ 'dark bg-gray-800': darkTheme, 'bg-gray-100': !darkTheme }">
-    <x-layout>
+    <x-ts-layout>
         <x-slot:top>
-            <x-dialog />
-            <x-toast />
+            <x-ts-dialog />
+            <x-ts-toast />
         </x-slot:top>
         <x-slot:header>
-            <x-layout.header>
+            <x-ts-layout.header>
                 <x-slot:left>
-                    <x-theme-switch />
+                    <x-ts-theme-switch />
                 </x-slot:left>
                 <x-slot:right>
-                    <x-dropdown>
+                    <x-ts-dropdown>
                         <x-slot:action>
                             <div>
                                 <button class="cursor-pointer" x-on:click="show = !show">
@@ -40,29 +40,29 @@
                         </x-slot:action>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown.items :text="__('Profile')" :href="route('user.profile')" />
-                            <x-dropdown.items :text="__('Logout')" onclick="event.preventDefault(); this.closest('form').submit();" separator />
+                            <x-ts-dropdown.items :text="__('Profile')" :href="route('user.profile')" />
+                            <x-ts-dropdown.items :text="__('Logout')" onclick="event.preventDefault(); this.closest('form').submit();" separator />
                         </form>
-                    </x-dropdown>
+                    </x-ts-dropdown>
                 </x-slot:right>
-            </x-layout.header>
+            </x-ts-layout.header>
         </x-slot:header>
         <x-slot:menu>
-            <x-side-bar smart collapsible>
+            <x-ts-side-bar smart collapsible>
                 <x-slot:brand>
                     <div class="mt-8 flex items-center justify-center">
                         <img src="{{ asset('/assets/images/tsui.png') }}" width="40" height="40" />
                     </div>
                 </x-slot:brand>
-                <x-side-bar.item text="Dashboard" icon="home" :route="route('dashboard')" />
-                <x-side-bar.item text="Users" icon="users" :route="route('users.index')" />
-                <x-side-bar.item text="Test" icon="users" :route="route('tests.index')" />
-                <x-side-bar.item text="Sample" icon="users" :route="route('smpl.index')" />
-                <x-side-bar.item text="Welcome Page" icon="arrow-uturn-left" :route="route('welcome')" />
-            </x-side-bar>
+                <x-ts-side-bar.item text="Dashboard" icon="home" :route="route('dashboard')" />
+                <x-ts-side-bar.item text="Users" icon="users" :route="route('users.index')" />
+                <x-ts-side-bar.item text="Welcome Page" icon="arrow-uturn-left" :route="route('home')" />
+                <x-ts-side-bar.item text="Sample" icon="users" :route="route('user-table.index')" />
+
+            </x-ts-side-bar>
         </x-slot:menu>
         {{ $slot }}
-    </x-layout>
+    </x-ts-layout>
     @livewireScripts
     </body>
 </html>
