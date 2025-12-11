@@ -13,8 +13,9 @@ return [
     | with other components registered by other libraries or created by yourself.
     |
     | For example: prefixing as 'ts-', the `alert` usage will be: '<x-ts-alert />'
+    | 'prefix' => env('TALLSTACKUI_PREFIX'),
     */
-    'prefix' => env('TALLSTACKUI_PREFIX'),
+    'prefix' => 'ts-',
 
     /*
     |--------------------------------------------------------------------------
